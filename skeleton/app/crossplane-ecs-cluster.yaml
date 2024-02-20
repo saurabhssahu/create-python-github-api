@@ -1,0 +1,35 @@
+---
+apiVersion: ecs.aws.crossplane.io/v1alpha1
+kind: Cluster
+metadata:
+  name: hello-payment-api
+spec:
+  forProvider:
+    clusterName: hello-payment-api
+    region: eu-west-1
+    capacityProviders:
+    - FARGATE
+    - FARGATE_SPOT
+    tags:
+    - key: Type
+      value: cluster-creation
+  providerConfigRef:
+    name: default
+
+---
+apiVersion: ecs.aws.crossplane.io/v1alpha1
+kind: Cluster
+metadata:
+  name: hello-python-argocd
+spec:
+  forProvider:
+    clusterName: hello-python-argocd
+    region: eu-west-1
+    capacityProviders:
+    - FARGATE
+    - FARGATE_SPOT
+    tags:
+    - key: Type
+      value: cluster-creation
+  providerConfigRef:
+    name: default

@@ -1,0 +1,18 @@
+apiVersion: ecs.aws.upbound.io/v1beta1
+kind: TaskDefinition
+metadata:
+  name: hello-world-api
+spec:
+  forProvider:
+    region: eu-west-1
+    family: hello-world-api
+    containerDefinitions: |-
+      [
+        {
+          "name": "first",
+          "image": "364737385840.dkr.ecr.eu-west-1.amazonaws.com/dob-app-darp:10.0.0",
+          "cpu": 10,
+          "memory": 512,
+          "essential":true
+        }
+      ]
